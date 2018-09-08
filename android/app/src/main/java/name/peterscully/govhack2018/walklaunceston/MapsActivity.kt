@@ -28,8 +28,9 @@ class MapsActivity : AppCompatActivity() {
 
     // 	Heritage Places
     private val defaultMapArea = LatLngBounds(LatLng(-41.5219, 146.9826), LatLng(-41.2159, 147.4671))
-    private val heritagePlaces: MutableList<HeritagePlace> = arrayListOf()
-    private val publicSeating: MutableList<PublicSeat> = arrayListOf()
+
+    private val heritagePlaces: MutableList<HeritagePlace> = mutableListOf()
+    private val publicSeating: MutableList<PublicSeat> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,7 @@ class MapsActivity : AppCompatActivity() {
         mapFragment.getMapAsync { googleMap -> onMapReady(googleMap = googleMap) }
     }
 
-    fun onMapReady(googleMap: GoogleMap) {
+    private fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         map.apply {
             setOnMapLoadedCallback { onMapLoaded() }
@@ -48,7 +49,7 @@ class MapsActivity : AppCompatActivity() {
         }
     }
 
-    fun onMapLoaded() {
+    private fun onMapLoaded() {
         map.animateCamera(
             CameraUpdateFactory.newLatLngBounds(
                 defaultMapArea,
@@ -67,7 +68,7 @@ class MapsActivity : AppCompatActivity() {
         { loadPublicSeating() }
     }
 
-    fun loadHeritagePlaces() {
+    private fun loadHeritagePlaces() {
         Log.d("loadHeritagePlaces", "")
         val inputStream = this.resources.openRawResource(R.raw.heritage_places)
 
@@ -99,7 +100,7 @@ class MapsActivity : AppCompatActivity() {
         }
     }
 
-    fun loadPublicSeating() {
+    private fun loadPublicSeating() {
         Log.d("loadPublicSeating", "")
         val inputStream = this.resources.openRawResource(R.raw.public_seating)
 
