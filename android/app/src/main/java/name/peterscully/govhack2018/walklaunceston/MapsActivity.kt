@@ -12,6 +12,7 @@ import android.util.Log
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
@@ -27,7 +28,8 @@ class MapsActivity : AppCompatActivity() {
 
     // 	Heritage Places
     private val defaultMapArea = LatLngBounds(LatLng(-41.5219, 146.9826), LatLng(-41.2159, 147.4671))
-    private var heritagePlaces: MutableList<HeritagePlace> = arrayListOf()
+    private val heritagePlaces: MutableList<HeritagePlace> = arrayListOf()
+    private val publicSeating: MutableList<PublicSeat> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +60,11 @@ class MapsActivity : AppCompatActivity() {
             requestCode = REQUEST_READ_EXTERNAL_STORAGE
         )
         { loadHeritagePlaces() }
+        doActionWithPermissions(
+            permission = READ_EXTERNAL_STORAGE,
+            requestCode = REQUEST_READ_EXTERNAL_STORAGE
+        )
+        { loadPublicSeating() }
     }
 
     fun loadHeritagePlaces() {
@@ -88,6 +95,40 @@ class MapsActivity : AppCompatActivity() {
             val marker = map.addMarker(MarkerOptions().apply {
                 position(location)
                 title(it.desc)
+            })
+            marker.tag = it.id
+        }
+    }
+
+    fun loadPublicSeating() {
+        Log.d("loadPublicSeating", "")
+        val inputStream = this.resources.openRawResource(R.raw.public_seating)
+
+        inputStream.bufferedReader()
+            .use { it.readText() }
+            .split(Pattern.compile("\n"))
+            .forEach { it ->
+                Log.d("loadPublicSeating", it)
+                val values = it.split(Pattern.compile(","))
+                try {
+                    publicSeating.add(
+                        PublicSeat(
+                            values[1].toDouble(),
+                            values[0].toDouble(),
+                            values[2].toLong(),
+                            values[3]
+                        )
+                    )
+                } catch (e: Exception) {
+                    Log.e("loadPublicSeating", "Exception", e)
+                }
+            }
+        publicSeating.forEach { it: PublicSeat ->
+            val location = LatLng(it.lat, it.long)
+            val marker = map.addMarker(MarkerOptions().apply {
+                position(location)
+                title(it.desc)
+                icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
             })
             marker.tag = it.id
         }
