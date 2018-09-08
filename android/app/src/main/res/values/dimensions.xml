@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="map_padding">8dp</dimen>
+
+    <dimen name="padding_top">12dp</dimen>
+    <dimen name="padding_bottom">12dp</dimen>
+    <dimen name="padding_left">12dp</dimen>
+    <dimen name="padding_right">12dp</dimen>
+    <dimen name="padding_start">12dp</dimen>
+    <dimen name="padding_end">12dp</dimen>
+    <dimen name="padding_inner">4dp</dimen>
+    <dimen name="padding_outer">8dp</dimen>
+</resources>
