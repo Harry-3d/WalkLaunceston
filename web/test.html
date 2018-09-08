@@ -1,0 +1,16 @@
+<html>
+
+<head>
+    <title>Test Page</title>
+</head>
+
+<body>
+    <form action="/test" method="post">
+        Send data to server <input type="text" name="comms"> 
+        <input type="submit" value="Send">
+        <p>Data sent: {{.TestCount}} times.</p>
+        <textarea name="output">{{.TestOutput}}</textarea>
+    </form>
+</body>
+
+</html>
