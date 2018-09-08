@@ -75,7 +75,6 @@ class MapsActivity : AppCompatActivity() {
             .use { it.readText() }
             .split(Pattern.compile("\n"))
             .forEach { it ->
-                Log.d("loadHeritagePlaces", it)
                 val values = it.split(Pattern.compile(","))
                 try {
                     heritagePlaces.add(
@@ -96,7 +95,7 @@ class MapsActivity : AppCompatActivity() {
                 position(location)
                 title(it.desc)
             })
-            marker.tag = it.id
+            marker.tag = "Heritage" + it.id
         }
     }
 
@@ -108,7 +107,6 @@ class MapsActivity : AppCompatActivity() {
             .use { it.readText() }
             .split(Pattern.compile("\n"))
             .forEach { it ->
-                Log.d("loadPublicSeating", it)
                 val values = it.split(Pattern.compile(","))
                 try {
                     publicSeating.add(
@@ -130,7 +128,7 @@ class MapsActivity : AppCompatActivity() {
                 title(it.desc)
                 icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
             })
-            marker.tag = it.id
+            marker.tag = "Seat" + it.id
         }
     }
 
