@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "565908040329-qap3g4issnoiq9butm4ji6lo38adt3un.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "name.peterscully.govhack2018.walklaunceston",
+            "certificate_hash": "5055f6e6129df2fe131f2394e1a5f6345c786205"
+          }
+        },
+        {
           "client_id": "565908040329-jke37neba4o9r31pfor99pj22ui7s5b2.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565908040329-jke37neba4o9r31pfor99pj22ui7s5b2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
