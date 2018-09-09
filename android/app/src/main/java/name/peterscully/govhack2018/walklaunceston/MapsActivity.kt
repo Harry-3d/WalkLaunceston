@@ -1,6 +1,5 @@
 package name.peterscully.govhack2018.walklaunceston
 
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -72,7 +71,7 @@ class MapsActivity : AppCompatActivity() {
 
     private fun loadHeritagePlaces() {
         Log.d("loadHeritagePlaces", "")
-        val inputStream = this.resources.openRawResource(R.raw.heritage_places)
+        val inputStream = this.resources.openRawResource(R.raw.heritage_places_custom)
 
         inputStream.bufferedReader()
             .use { it.readText() }
@@ -80,16 +79,14 @@ class MapsActivity : AppCompatActivity() {
             .forEach { it ->
                 val values = it.split(Pattern.compile(","))
                 try {
-                    if (values[6].isNotBlank()) {
-                        heritagePlaces.add(
-                            HeritagePlace(
-                                values[1].toDouble(),
-                                values[0].toDouble(),
-                                values[2].toLong(),
-                                values[6]
-                            )
+                    heritagePlaces.add(
+                        HeritagePlace(
+                            values[1].toDouble(),
+                            values[0].toDouble(),
+                            values[2].toLong(),
+                            values[6]
                         )
-                    }
+                    )
                 } catch (e: Exception) {
                     Log.e("loadHeritagePlaces", "Exception", e)
                 }
