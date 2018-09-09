@@ -1,14 +1,14 @@
-X,Y,objectid,local,state,thr_id,original_a,commentary
-147.105535808556,-41.4581084943785,590,LCC,,0,Duck Reach Power Stn Museum Duck Reach Road TREVALLYN TAS 7250,
-147.127113676939,-41.4402891091327,1377,LCC,THC,3874,,King's Bridge
-147.128842323231,-41.4403502389906,235,LCC,THC,3872,,Mill
-147.110633208139,-41.4586703121495,589,LCC,,0,Cataract Gorge Reserve (Cliffground) 1-5 Corin Street WEST LAUNCESTON TAS 7250,
-147.117235803987,-41.4539013823002,153,LCC,,0,First Basin Reserve Basin Road WEST LAUNCESTON TAS 7250,
-147.119347233899,-41.4482459834849,154,LCC,,0,First Basin Reserve Basin Road WEST LAUNCESTON TAS 7250,
-147.121644876721,-41.4473633075746,155,LCC,,0,First Basin Reserve Basin Road WEST LAUNCESTON TAS 7250,
-147.117316692924,-41.4461858969753,616,LCC,,0,Cataract Gorge Reserve (Cliffgrounds) Dandenong Road TREVALLYN TAS 7250,Gorge
-147.121036209151,-41.4452200550789,152,LCC,THC,0,First Basin Reserve Basin Road WEST LAUNCESTON TAS 7250,
-147.117428030584,-41.4448097225923,618,LCC,,0,Cataract Gorge Reserve (Cliffgrounds) Dandenong Road TREVALLYN TAS 7250,Gorge
-147.126467335288,-41.4417503893408,298,LCC,,0,Cataract Gorge Reserve (First Basin) 274 Brisbane Street WEST LAUNCESTON TAS 7250,
-147.125795550587,-41.440422359977,1242,LCC,,0,Cataract Gorge Reserve (Cliffgrounds) Dandenong Road TREVALLYN TAS 7250,Gorge
-147.126371443986,-41.4402538966459,236,LCC,THC,3873,,Cottage
+X,Y,objectid,local,state,thr_id,original_a,commentary,url
+147.105535808556,-41.4581084943785,590,LCC,,0,Duck Reach Power Station Museum,,http://www.destinationlaunceston.com.au/see_do/duck_reach_power_station_trail_interpretation_centre
+147.127113676939,-41.4402891091327,1377,LCC,THC,3874,,King's Bridge,http://ontheconvicttrail.blogspot.com/2016/05/kings-bridge-launceston.html
+147.128842323231,-41.4403502389906,235,LCC,THC,3872,,Mill,http://www.northerntasmania.com.au/restaurants/mill-providore-and-gallery-the/
+147.110633208139,-41.4586703121495,589,LCC,,0,Cataract Gorge Reserve (Cliffground),,
+147.117235803987,-41.4539013823002,153,LCC,,0,First Basin Reserve,,
+147.119347233899,-41.4482459834849,154,LCC,,0,First Basin Reserve,,
+147.121644876721,-41.4473633075746,155,LCC,,0,First Basin Reserve,,
+147.117316692924,-41.4461858969753,616,LCC,,0,Cataract Gorge Reserve (Cliffgrounds),Gorge,
+147.121036209151,-41.4452200550789,152,LCC,THC,0,First Basin Reserve,,
+147.117428030584,-41.4448097225923,618,LCC,,0,Cataract Gorge Reserve (Cliffgrounds),Gorge,
+147.126467335288,-41.4417503893408,298,LCC,,0,Cataract Gorge Reserve (First Basin),,
+147.125795550587,-41.440422359977,1242,LCC,,0,Cataract Gorge Reserve (Cliffgrounds),Gorge,
+147.126371443986,-41.4402538966459,236,LCC,THC,3873,,Cottage,

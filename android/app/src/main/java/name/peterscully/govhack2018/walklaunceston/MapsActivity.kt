@@ -1,7 +1,9 @@
 package name.peterscully.govhack2018.walklaunceston
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
@@ -11,10 +13,7 @@ import android.util.Log
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.maps.android.data.kml.KmlLayer
 import java.util.regex.Pattern
 
@@ -45,8 +44,8 @@ class MapsActivity : AppCompatActivity() {
         map.apply {
             mapType = GoogleMap.MAP_TYPE_TERRAIN
             setOnMapLoadedCallback { onMapLoaded() }
-//            setOnMarkerClickListener { marker -> onMarkerClick(marker = marker) }
-//            setOnInfoWindowClickListener { marker -> onInfoWindowClick(marker = marker) }
+            setOnMarkerClickListener { marker -> onMarkerClick(marker = marker) }
+            setOnInfoWindowClickListener { marker -> onInfoWindowClick(marker = marker) }
         }
     }
 
@@ -58,7 +57,7 @@ class MapsActivity : AppCompatActivity() {
             )
         )
         loadHeritagePlaces()
-//        loadPublicSeating()
+        loadPublicSeating()
         loadTrails()
     }
 
@@ -74,10 +73,11 @@ class MapsActivity : AppCompatActivity() {
                 try {
                     heritagePlaces.add(
                         HeritagePlace(
-                            values[1].toDouble(),
-                            values[0].toDouble(),
-                            values[2].toLong(),
-                            values[6]
+                            lat = values[1].toDouble(),
+                            long = values[0].toDouble(),
+                            id = values[2].toLong(),
+                            desc = values[6],
+                            url = values[8]
                         )
                     )
                 } catch (e: Exception) {
@@ -106,10 +106,10 @@ class MapsActivity : AppCompatActivity() {
                 try {
                     publicSeating.add(
                         PublicSeat(
-                            values[1].toDouble(),
-                            values[0].toDouble(),
-                            values[2].toLong(),
-                            values[3]
+                            lat = values[1].toDouble(),
+                            long = values[0].toDouble(),
+                            id = values[2].toLong(),
+                            desc = values[3]
                         )
                     )
                 } catch (e: Exception) {
@@ -130,6 +130,26 @@ class MapsActivity : AppCompatActivity() {
     private fun loadTrails() {
         val layer = KmlLayer(map, R.raw.recreational_trails, applicationContext)
         layer.addLayerToMap()
+    }
+
+    fun onMarkerClick(marker: Marker?): Boolean {
+        marker?.let {
+        }
+        return false
+    }
+
+    fun onInfoWindowClick(marker: Marker?) {
+        marker?.let {
+            val tag = marker.tag as String
+            if (tag.startsWith("Heritage")) {
+                val id = tag.removePrefix("Heritage").toLong()
+                val url = heritagePlaces.first { place -> place.id == id }.url
+                if (url.isNotBlank()) {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
+                }
+            }
+        }
     }
 
     private fun doActionWithPermissions(permission: String, requestCode: Int, action: () -> Unit) {
