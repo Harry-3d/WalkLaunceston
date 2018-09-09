@@ -85,7 +85,7 @@ class MapsActivity : AppCompatActivity() {
             val marker = map.addMarker(MarkerOptions().apply {
                 position(location)
                 title(it.desc)
-                icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE))
+                icon(BitmapDescriptorFactory.fromResource(R.drawable.scenic))
             })
             marker.tag = "Heritage" + it.id
         }
@@ -118,7 +118,7 @@ class MapsActivity : AppCompatActivity() {
             val marker = map.addMarker(MarkerOptions().apply {
                 position(location)
                 title(it.desc)
-                icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                icon(BitmapDescriptorFactory.fromResource(R.drawable.seat))
             })
             marker.tag = "Seat" + it.id
         }
