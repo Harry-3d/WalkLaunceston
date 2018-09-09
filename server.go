@@ -49,7 +49,9 @@ func test(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	//ReadKmlfile("data/Recreational_Trails.kml")
 	initSvr()
+
 }
 
 // initSver - Start HTTP server.
@@ -63,6 +65,7 @@ func initSvr() {
 
 	// Serve static files
 	http.Handle("/web/", http.StripPrefix("/web/", http.FileServer(http.Dir("web"))))
+	http.Handle("/data/", http.StripPrefix("/data/", http.FileServer(http.Dir("data"))))
 
 	err := http.ListenAndServe("192.168.1.112:8888", nil)
 	if err != nil {
