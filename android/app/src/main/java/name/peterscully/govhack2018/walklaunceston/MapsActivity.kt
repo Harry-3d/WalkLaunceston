@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.maps.android.data.kml.KmlLayer
 import java.util.regex.Pattern
 
 
@@ -23,10 +24,10 @@ class MapsActivity : AppCompatActivity() {
     private lateinit var map: GoogleMap
 
     // Recreational Trails
-//    private val defaultMapArea = LatLngBounds(LatLng(-41.4933, 147.0787), LatLng(-41.2291, 147.2219))
+    private val defaultMapArea = LatLngBounds(LatLng(-41.4933, 147.0787), LatLng(-41.2291, 147.2219))
 
     // 	Heritage Places
-    private val defaultMapArea = LatLngBounds(LatLng(-41.5219, 146.9826), LatLng(-41.2159, 147.4671))
+//    private val defaultMapArea = LatLngBounds(LatLng(-41.5219, 146.9826), LatLng(-41.2159, 147.4671))
 
     private val heritagePlaces: MutableList<HeritagePlace> = mutableListOf()
     private val publicSeating: MutableList<PublicSeat> = mutableListOf()
@@ -42,6 +43,7 @@ class MapsActivity : AppCompatActivity() {
     private fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         map.apply {
+            mapType = GoogleMap.MAP_TYPE_TERRAIN
             setOnMapLoadedCallback { onMapLoaded() }
 //            setOnMarkerClickListener { marker -> onMarkerClick(marker = marker) }
 //            setOnInfoWindowClickListener { marker -> onInfoWindowClick(marker = marker) }
@@ -55,18 +57,9 @@ class MapsActivity : AppCompatActivity() {
                 resources.getDimensionPixelSize(R.dimen.map_padding)
             )
         )
-//        doActionWithPermissions(
-//            permission = READ_EXTERNAL_STORAGE,
-//            requestCode = REQUEST_READ_EXTERNAL_STORAGE
-//        )
-//        { loadHeritagePlaces() }
-//        doActionWithPermissions(
-//            permission = READ_EXTERNAL_STORAGE,
-//            requestCode = REQUEST_READ_EXTERNAL_STORAGE
-//        )
-//        { loadPublicSeating() }
         loadHeritagePlaces()
-        loadPublicSeating()
+//        loadPublicSeating()
+        loadTrails()
     }
 
     private fun loadHeritagePlaces() {
@@ -132,6 +125,11 @@ class MapsActivity : AppCompatActivity() {
             })
             marker.tag = "Seat" + it.id
         }
+    }
+
+    private fun loadTrails() {
+        val layer = KmlLayer(map, R.raw.recreational_trails, applicationContext)
+        layer.addLayerToMap()
     }
 
     private fun doActionWithPermissions(permission: String, requestCode: Int, action: () -> Unit) {
