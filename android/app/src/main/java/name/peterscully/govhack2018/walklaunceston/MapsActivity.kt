@@ -22,11 +22,7 @@ class MapsActivity : AppCompatActivity() {
 
     private lateinit var map: GoogleMap
 
-    // Recreational Trails
-    private val defaultMapArea = LatLngBounds(LatLng(-41.4933, 147.0787), LatLng(-41.2291, 147.2219))
-
-    // 	Heritage Places
-//    private val defaultMapArea = LatLngBounds(LatLng(-41.5219, 146.9826), LatLng(-41.2159, 147.4671))
+    private val defaultMapArea = LatLngBounds(LatLng(-41.460828, 147.097281), LatLng(-41.430178, 147.138681))
 
     private val heritagePlaces: MutableList<HeritagePlace> = mutableListOf()
     private val publicSeating: MutableList<PublicSeat> = mutableListOf()
@@ -96,7 +92,7 @@ class MapsActivity : AppCompatActivity() {
 
     private fun loadPublicSeating() {
         Log.d("loadPublicSeating", "")
-        val inputStream = this.resources.openRawResource(R.raw.public_seating)
+        val inputStream = this.resources.openRawResource(R.raw.public_seating_custom)
 
         inputStream.bufferedReader()
             .use { it.readText() }
