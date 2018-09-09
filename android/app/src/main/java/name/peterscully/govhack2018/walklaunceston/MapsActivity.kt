@@ -85,6 +85,7 @@ class MapsActivity : AppCompatActivity() {
             val marker = map.addMarker(MarkerOptions().apply {
                 position(location)
                 title(it.desc)
+                icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE))
             })
             marker.tag = "Heritage" + it.id
         }
