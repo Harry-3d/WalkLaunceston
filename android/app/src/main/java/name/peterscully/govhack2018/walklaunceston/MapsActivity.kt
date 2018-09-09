@@ -80,14 +80,16 @@ class MapsActivity : AppCompatActivity() {
             .forEach { it ->
                 val values = it.split(Pattern.compile(","))
                 try {
-                    heritagePlaces.add(
-                        HeritagePlace(
-                            values[1].toDouble(),
-                            values[0].toDouble(),
-                            values[2].toLong(),
-                            values[6]
+                    if (values[6].isNotBlank()) {
+                        heritagePlaces.add(
+                            HeritagePlace(
+                                values[1].toDouble(),
+                                values[0].toDouble(),
+                                values[2].toLong(),
+                                values[6]
+                            )
                         )
-                    )
+                    }
                 } catch (e: Exception) {
                     Log.e("loadHeritagePlaces", "Exception", e)
                 }
