@@ -56,16 +56,18 @@ class MapsActivity : AppCompatActivity() {
                 resources.getDimensionPixelSize(R.dimen.map_padding)
             )
         )
-        doActionWithPermissions(
-            permission = READ_EXTERNAL_STORAGE,
-            requestCode = REQUEST_READ_EXTERNAL_STORAGE
-        )
-        { loadHeritagePlaces() }
-        doActionWithPermissions(
-            permission = READ_EXTERNAL_STORAGE,
-            requestCode = REQUEST_READ_EXTERNAL_STORAGE
-        )
-        { loadPublicSeating() }
+//        doActionWithPermissions(
+//            permission = READ_EXTERNAL_STORAGE,
+//            requestCode = REQUEST_READ_EXTERNAL_STORAGE
+//        )
+//        { loadHeritagePlaces() }
+//        doActionWithPermissions(
+//            permission = READ_EXTERNAL_STORAGE,
+//            requestCode = REQUEST_READ_EXTERNAL_STORAGE
+//        )
+//        { loadPublicSeating() }
+        loadHeritagePlaces()
+        loadPublicSeating()
     }
 
     private fun loadHeritagePlaces() {
